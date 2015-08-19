@@ -24,9 +24,6 @@
     <ClInclude Include="Scorer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IDie.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

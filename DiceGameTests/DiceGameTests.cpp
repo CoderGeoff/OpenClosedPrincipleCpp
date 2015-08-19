@@ -3,7 +3,6 @@
 
 #include <gtest/gtest.h>
 #include "Scorer.h"
-#include "TestDie.h"
 
 TEST(DiceGameTests, GivenOneDie_WhenFiveIsThrown_ScoreShouldBe50)
 {

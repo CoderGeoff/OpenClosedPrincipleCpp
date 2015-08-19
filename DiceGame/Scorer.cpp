@@ -14,6 +14,20 @@ int Scorer::Score() const
 {
     int score = 0;
 
+    bool fullStraight = true;
+    for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
+    {
+        fullStraight = fullStraight && GetCountOf(diceThrow) == 1;
+    }
+    if (fullStraight)
+    {
+        for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
+        {
+            SubtractFromCount(diceThrow);
+        }
+        score += 1500;
+    }
+
     for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
     {
         int scoreMultiplier = diceThrow == 1 ? 10 : diceThrow;
@@ -35,5 +49,11 @@ int Scorer::Score() const
 int Scorer::GetCountOf(int diceThrow) const
 {
     auto finder = m_Count.find(diceThrow);
-    return finder == m_Count.end() ? 0 : finder->second;
+    int numberThrown = finder == m_Count.end() ? 0 : finder->second;
+    return numberThrown - m_Subtractions[diceThrow];
+}
+
+void Scorer::SubtractFromCount(int diceThrow, int count) const
+{
+    m_Subtractions[diceThrow] += count;
 }

@@ -7,21 +7,22 @@ In DiceGame:
 
 | Class | Description |
 |-------|-------------|
-| Scorer | Calculates the score for a throw of one to six dice, based on the rules of "10000"*. The implementation doesn't obey the open - closed principle.|
+| Scorer | Calculates the score for a throw of one to six dice, based on the rules of "10000" (see below). The implementation doesn't obey the open - closed principle.|
 
 In OpenClosedDiceGame:
 
 | Class | Description |
 |-------|-------------|
-| OpenClosedScorer | Calculates the score for a throw of one to six dice, based on the rules of "10000"*. The implementation *does* obey the open - closed principle.|
+| OpenClosedScorer | Calculates the score for a throw of one to six dice, based on the rules of "10000". The implementation *does* obey the open - closed principle.|
 
 In WordCounterTests:
 
 | Class | Description |
 |-------|-------------|
 | ScorerTests | Test a number of key scoring scenarios. The test run on both implementations of the Scorer. |
+| NewRuleTest | An empty test fixture which you will use in the exercise. |
 
-## Scoring for 10000*
+## Scoring for 10000
 I won't cover all the rules of the game here. It's enough to know that a player can throw between 1 and 6 dice and have them scored
 as follows
 
@@ -37,4 +38,7 @@ You can only score each die once.
 The players want to add a new rule: 
 * Three of a kind a pair score the three of a kind value plus 250
 
-Your job is to implement this for 
+Your job is to change Scorer to implement this rule. Write a test for the rule in the test fixture NewRuleTest.
+
+## Task 2
+Now change OpenClosedScorer to implement this rule. Before implementing, move your test to ScorerTests, so that it runs on both types of scorer.

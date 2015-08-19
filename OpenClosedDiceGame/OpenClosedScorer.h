@@ -2,12 +2,12 @@
 #include <vector>
 #include <map>
 
-class Scorer
+class OpenClosedScorer
 {
     std::map<int, int> m_Count;
     int GetCountOf(int diceThrow) const;
 public:
-    explicit Scorer(const std::vector<int>& diceThrows);
+    explicit OpenClosedScorer(const std::vector<int>& diceThrows);
     int Score() const;
 };
 

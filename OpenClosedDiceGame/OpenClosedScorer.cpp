@@ -1,7 +1,7 @@
 #include <math.h>
-#include "Scorer.h"
+#include "OpenClosedScorer.h"
 
-Scorer::Scorer(const std::vector<int>& diceThrows)
+OpenClosedScorer::OpenClosedScorer(const std::vector<int>& diceThrows)
 {
     for (int i = 1; i <= 6; ++i)
     {
@@ -10,7 +10,7 @@ Scorer::Scorer(const std::vector<int>& diceThrows)
 }
 
 
-int Scorer::Score() const
+int OpenClosedScorer::Score() const
 {
     int score = 0;
     std::map<int, int> m_Subtractions;
@@ -46,7 +46,7 @@ int Scorer::Score() const
     return score;
 }
 
-int Scorer::GetCountOf(int diceThrow) const
+int OpenClosedScorer::GetCountOf(int diceThrow) const
 {
     auto finder = m_Count.find(diceThrow);
     return finder == m_Count.end() ? 0 : finder->second;

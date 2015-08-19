@@ -21,7 +21,7 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scorer.h">
+    <ClInclude Include="OpenClosedScorer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scorer.cpp">
+    <ClCompile Include="OpenClosedScorer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

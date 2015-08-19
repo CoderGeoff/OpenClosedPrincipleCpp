@@ -3,6 +3,7 @@
 
 #include <gtest/gtest.h>
 #include "Scorer.h"
+#include "OpenClosedScorer.h"
 
 template <class T>
 class ScorerTests : public testing::Test
@@ -10,7 +11,7 @@ class ScorerTests : public testing::Test
 };
 
 using testing::Types;
-typedef Types<Scorer> ScorerTypes;
+typedef Types<Scorer, OpenClosedScorer> ScorerTypes;
 TYPED_TEST_CASE(ScorerTests, ScorerTypes);
 
 TYPED_TEST(ScorerTests, GivenOneDie_WhenFiveIsThrown_ScoreShouldBe50)

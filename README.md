@@ -13,7 +13,7 @@ In OpenClosedDiceGame:
 
 | Class | Description |
 |-------|-------------|
-| OPenClosedScorer | Calculates the score for a throw of one to six dice, based on the rules of "10000"*. The implementation *does* obey the open - closed principle.|
+| OpenClosedScorer | Calculates the score for a throw of one to six dice, based on the rules of "10000"*. The implementation *does* obey the open - closed principle.|
 
 In WordCounterTests:
 

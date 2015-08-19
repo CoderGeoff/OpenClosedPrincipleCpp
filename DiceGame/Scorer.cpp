@@ -3,9 +3,9 @@
 int Scorer::Score(const std::vector<int>& diceThrows) const
 {
     int score = 0;
-    for (auto i = diceThrows.begin(); i != diceThrows.end(); ++i)
-    {
-        if (*i == 5) score = 50;
-    }
+
+    if (std::count(diceThrows.begin(), diceThrows.end(), 5) == 1)
+        score += 50;
+    
     return score;
 }

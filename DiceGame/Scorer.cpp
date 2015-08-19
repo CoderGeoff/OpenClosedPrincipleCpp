@@ -7,6 +7,9 @@ int Scorer::Score(const std::vector<int>& diceThrows) const
     if (std::count(diceThrows.begin(), diceThrows.end(), 5) == 1)
         score += 50;
 
+    if (std::count(diceThrows.begin(), diceThrows.end(), 1) == 3)
+        score += 1000;
+
     if (std::count(diceThrows.begin(), diceThrows.end(), 1) == 1)
         score += 100;
 

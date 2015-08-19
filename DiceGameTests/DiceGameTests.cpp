@@ -21,3 +21,12 @@ TEST(DiceGameTests, GivenOneDie_WhenOneIsThrown_ScoreShouldBe100)
     ASSERT_EQ(100, score);
 }
 
+TEST(DiceGameTests, GivenThreeDie_WhenAllOnesAreThrown_ScoreShouldBe1000)
+{
+    auto dice = std::vector<int> { 1, 1, 1 };
+    Scorer scorer;
+    int score = scorer.Score(dice);
+    ASSERT_EQ(1000, score);
+}
+
+

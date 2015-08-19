@@ -29,4 +29,43 @@ TEST(DiceGameTests, GivenThreeDie_WhenAllOnesAreThrown_ScoreShouldBe1000)
     ASSERT_EQ(1000, score);
 }
 
+TEST(DiceGameTests, GivenThreeDie_WhenAllTwosAreThrown_ScoreShouldBe200)
+{
+    auto dice = std::vector<int> { 2, 2, 2 };
+    Scorer scorer;
+    int score = scorer.Score(dice);
+    ASSERT_EQ(200, score);
+}
+
+TEST(DiceGameTests, GivenThreeDie_WhenAllSixesAreThrown_ScoreShouldBe600)
+{
+    auto dice = std::vector<int> { 6, 6, 6 };
+    Scorer scorer;
+    int score = scorer.Score(dice);
+    ASSERT_EQ(600, score);
+}
+
+TEST(DiceGameTests, GivenFourDie_WhenAllSixesAreThrown_ScoreShouldBe1200)
+{
+    auto dice = std::vector<int> { 6, 6, 6, 6 };
+    Scorer scorer;
+    int score = scorer.Score(dice);
+    ASSERT_EQ(1200, score);
+}
+
+TEST(DiceGameTests, GivenFiveDie_WhenAllOnesAreThrown_ScoreShouldBe4000)
+{
+    auto dice = std::vector<int> { 1, 1, 1, 1, 1 };
+    Scorer scorer;
+    int score = scorer.Score(dice);
+    ASSERT_EQ(4000, score);
+}
+
+TEST(DiceGameTests, GivenSixDie_WhenAllThreesAreThrown_ScoreShouldBe2400)
+{
+    auto dice = std::vector<int> { 3, 3, 3, 3, 3, 3 };
+    Scorer scorer;
+    int score = scorer.Score(dice);
+    ASSERT_EQ(2400, score);
+}
 

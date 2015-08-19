@@ -37,8 +37,7 @@ int Scorer::Score() const
         }
     }
 
-    if (GetCountOf(5) == 1)
-        score += 50;
+    score += GetCountOf(5) * 50;
 
     if (GetCountOf(1) == 1)
         score += 100;

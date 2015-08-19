@@ -13,17 +13,18 @@ Scorer::Scorer(const std::vector<int>& diceThrows)
 int Scorer::Score() const
 {
     int score = 0;
+    std::map<int, int> m_Subtractions;
 
     bool fullStraight = true;
     for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
     {
-        fullStraight = fullStraight && GetCountOf(diceThrow) == 1;
+        fullStraight = fullStraight && GetCountOf(diceThrow) - m_Subtractions[diceThrow] == 1;
     }
     if (fullStraight)
     {
         for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
         {
-            SubtractFromCount(diceThrow);
+            m_Subtractions[diceThrow]++;
         }
         score += 1500;
     }
@@ -31,16 +32,16 @@ int Scorer::Score() const
     for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
     {
         int scoreMultiplier = diceThrow == 1 ? 10 : diceThrow;
-        int numberOfDice = GetCountOf(diceThrow);
+        int numberOfDice = GetCountOf(diceThrow) - m_Subtractions[diceThrow];
         if (numberOfDice >= 3)
         {
             score += (100 * scoreMultiplier) * static_cast<int>(pow(2, numberOfDice - 3));
-            SubtractFromCount(diceThrow, numberOfDice);
+            m_Subtractions[diceThrow] += numberOfDice;
         }
     }
 
-    score += GetCountOf(5) * 50;
-    score += GetCountOf(1) * 100;
+    score += (GetCountOf(5) - m_Subtractions[5]) * 50;
+    score += (GetCountOf(1) - m_Subtractions[1]) * 100;
 
     return score;
 }
@@ -48,11 +49,5 @@ int Scorer::Score() const
 int Scorer::GetCountOf(int diceThrow) const
 {
     auto finder = m_Count.find(diceThrow);
-    int numberThrown = finder == m_Count.end() ? 0 : finder->second;
-    return numberThrown - m_Subtractions[diceThrow];
-}
-
-void Scorer::SubtractFromCount(int diceThrow, int count) const
-{
-    m_Subtractions[diceThrow] += count;
+    return finder == m_Count.end() ? 0 : finder->second;
 }

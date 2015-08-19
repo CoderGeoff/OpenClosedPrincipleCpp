@@ -31,16 +31,16 @@ int Scorer::Score() const
     for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
     {
         int scoreMultiplier = diceThrow == 1 ? 10 : diceThrow;
-        if (GetCountOf(diceThrow) >= 3)
+        int numberOfDice = GetCountOf(diceThrow);
+        if (numberOfDice >= 3)
         {
-            score += (100 * scoreMultiplier) * static_cast<int>(pow(2, GetCountOf(diceThrow) - 3));
+            score += (100 * scoreMultiplier) * static_cast<int>(pow(2, numberOfDice - 3));
+            SubtractFromCount(diceThrow, numberOfDice);
         }
     }
 
     score += GetCountOf(5) * 50;
-
-    if (GetCountOf(1) == 1)
-        score += 100;
+    score += GetCountOf(1) * 100;
 
     return score;
 }

@@ -69,7 +69,7 @@ TEST(DiceGameTests, GivenSixDie_WhenAllThreesAreThrown_ScoreShouldBe2400)
     ASSERT_EQ(2400, score);
 }
 
-TEST(DiceGameTests, GivenTwoDie_WhenTheFivesAreThrow_ScoreShouldBe100)
+TEST(DiceGameTests, GivenTwoDie_WhenTwoFivesAreThrownn_ScoreShouldBe100)
 {
     auto dice = std::vector<int> { 5, 5 };
     Scorer scorer(dice);
@@ -77,6 +77,13 @@ TEST(DiceGameTests, GivenTwoDie_WhenTheFivesAreThrow_ScoreShouldBe100)
     ASSERT_EQ(100, score);
 }
 
+TEST(DiceGameTests, GivenTwoDie_WhenTwoOnesAreThrown_ScoreShouldBe200)
+{
+    auto dice = std::vector<int> { 1, 1 };
+    Scorer scorer(dice);
+    int score = scorer.Score();
+    ASSERT_EQ(200, score);
+}
 TEST(DiceGameTests, GivenSixDie_FullStraight_ScoreShouldBe1500)
 {
     auto dice = std::vector<int> { 1, 2, 3, 4, 5, 6 };
@@ -84,3 +91,4 @@ TEST(DiceGameTests, GivenSixDie_FullStraight_ScoreShouldBe1500)
     int score = scorer.Score();
     ASSERT_EQ(1500, score);
 }
+

@@ -1,5 +1,6 @@
 #include "ScoringRulesFactory.h"
 #include "NOfAKindScoresXRule.h"
+#include "StraightFlushRule.h"
 
 std::vector<std::shared_ptr<IScoringRule>> ScoringRulesFactory::CreateRules() const
 {
@@ -14,12 +15,14 @@ std::vector<std::shared_ptr<IScoringRule>> ScoringRulesFactory::CreateRules() co
     auto three2sTo6sScore100TimesDiceValue = std::make_shared <NOfAKindScoresXRule>(twoToSixPredicate, 3, [](int n) { return 100 * n; });
     auto single1Scores100 = std::make_shared <NOfAKindScoresXRule>(1, 1, 100);
     auto single5Scores50 = std::make_shared <NOfAKindScoresXRule>(5, 1, 50);
+    auto straightFlushScores1500 = std::make_shared<StraightFlushRule>(1500);
 
     return std::vector<std::shared_ptr<IScoringRule>> 
     {
         six1sScore8000,
         five1sScore4000,
         four1sScore2000,
+        straightFlushScores1500,
         three1sScore1000,
         six2sTo6sScore800TimesDiceValue,
         five2sTo6sScore400TimesDiceValue,

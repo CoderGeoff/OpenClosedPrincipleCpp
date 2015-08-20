@@ -30,7 +30,7 @@
     <ClInclude Include="ScoringRulesFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Single5Scores50Rule.h">
+    <ClInclude Include="NOfAKindScoresXRule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,7 +47,7 @@
     <ClCompile Include="ScoringRulesFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Single5Scores50Rule.cpp">
+    <ClCompile Include="NOfAKindScoresXRule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

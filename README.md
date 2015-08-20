@@ -14,6 +14,11 @@ In OpenClosedDiceGame:
 | Class | Description |
 |-------|-------------|
 | OpenClosedScorer | Calculates the score for a throw of one to six dice, based on the rules of "10000". The implementation *does* obey the open - closed principle.|
+| ScoringRulesFactory | Creates the rules that OpenClosedScorer uses to score the throw of the dice. |
+| ScoringRulesResult | Describes the data returned by a scoring rule (including the score!) |
+| IScoringRule | Base class for a scoring rule |
+| NOfAKindScoresXRule | A general rule that matches n dice of the same value gives them a score. |
+| StraightFlushRule | A  rule that matches a straight flush and gives it a score. |
 
 In WordCounterTests:
 
@@ -30,15 +35,22 @@ as follows
 * Single ones are worth 100 points
 * Three of a kind are worth 100 points times the number rolled, except for three ones which are worth 1000 points
 * If four, five, or six of a kind are rolled, each additional die is worth double the three of a kind score. (This makes the highest possible score in a single roll 8000 for six ones: 1000 for three ones, doubled 3 times.)
-* A straight from 1 to 6 is worth 1500 points
-* Three pairs are worth 750 points
+* A straight flush from 1 to 6 (that is, a roll of {1, 2, 3, 4, 5, 6}) is worth 1500 points
 You can only score each die once.
 
 ## Task 1
+The players want to change the score for six ones from 8000 to 10000.
+Implement this as follows
+
+# Change the test GivenThreeDie_WhenAllOnesAreThrown_ScoreShouldBe1000
+# Change Scorer to get it to pass the test
+# Change OpenClosedScorer
+
+## Task 2
 The players want to add a new rule: 
-* Three of a kind a pair score the three of a kind value plus 250
+* Three of a kind plus a pair score the three of a kind value plus 250
 
 Your job is to change Scorer to implement this rule. Write a test for the rule in the test fixture NewRuleTest.
 
-## Task 2
+## Task 3
 Now change OpenClosedScorer to implement this rule. Before implementing, move your test to ScorerTests, so that it runs on both types of scorer.

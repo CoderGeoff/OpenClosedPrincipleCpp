@@ -36,7 +36,7 @@
     <ClInclude Include="ScoringRuleResult.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StraightFlushRule.h">
+    <ClInclude Include="StraightFlushScoresXRule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,7 +59,7 @@
     <ClCompile Include="ScoringRuleResult.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StraightFlushRule.cpp">
+    <ClCompile Include="StraightFlushScoresXRule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

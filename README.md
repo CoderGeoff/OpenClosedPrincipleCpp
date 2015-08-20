@@ -17,10 +17,10 @@ In OpenClosedDiceGame:
 | ScoringRulesFactory | Creates the rules that OpenClosedScorer uses to score the throw of the dice. |
 | ScoringRulesResult | Describes the data returned by a scoring rule (including the score!) |
 | IScoringRule | Base class for a scoring rule |
-| NOfAKindScoresXRule | A general rule that matches n dice of the same value gives them a score. |
-| StraightFlushRule | A  rule that matches a straight flush and gives it a score. |
+| NOfAKindScoresXRule | A general rule that matches n dice that have a value that meets a giving condition, and and gives them a score. |
+| PatternScoresXRule | A  general rule that matches a fixed dice pattern and gives it a score. |
 
-In WordCounterTests:
+In DiceGameTests:
 
 | Class | Description |
 |-------|-------------|
@@ -47,10 +47,20 @@ Implement this as follows
 # Change OpenClosedScorer
 
 ## Task 2
-The players want to add a new rule: 
-* Three of a kind plus a pair score the three of a kind value plus 250
+The players want to remove all the rules that match three of a kind (three 1s, three 2s etc.) 
+Implement this as follows
 
-Your job is to change Scorer to implement this rule. Write a test for the rule in the test fixture NewRuleTest.
+# Change the tests GivenThreeDie...etc. to validate that the score is 0 in each case
+# Change Scorer to implement the change
+# Change OpenClosedScorer to make the same change
 
 ## Task 3
-Now change OpenClosedScorer to implement this rule. Before implementing, move your test to ScorerTests, so that it runs on both types of scorer.
+The players want to add a new rule: fours 2s and a pair of 3s score 1500, and so do four 3s and pair of 2s. This is scored instead of the normal score for four 2s or four 3s.
+Implement this as follows
+# Add two tests to validate the new rule
+# Change Scorer to implement the new rule
+# Change OpenClosedScorer to make the same change
+
+# Task 4
+The tests in ScorerTests were written intially for the scorer that doesn't obey the open-closed principle and were retro-fitted to the OpenClosedScorer. If we had started from 
+scratch with the OpenClosed scorer, the tests would have looked very different; jot down two significant differences would you expect to see.

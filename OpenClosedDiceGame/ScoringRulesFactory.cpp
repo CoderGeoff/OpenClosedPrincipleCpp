@@ -5,10 +5,11 @@
 std::vector<std::shared_ptr<IScoringRule>> ScoringRulesFactory::CreateRules() const
 {
     auto twoToSixPredicate = [](int n){ return n != 1; };
-    auto six1sScore8000 = std::make_shared <NOfAKindScoresXRule>(1, 6, 8000);
-    auto five1sScore4000 = std::make_shared <NOfAKindScoresXRule>(1, 5, 4000);
-    auto four1sScore2000 = std::make_shared <NOfAKindScoresXRule>(1, 4, 2000);
-    auto three1sScore1000 = std::make_shared <NOfAKindScoresXRule>(1, 3, 1000);
+
+    auto six1sScore8000 = std::shared_ptr<PatternScoresXRule>(new PatternScoresXRule({ 1, 1, 1, 1, 1, 1 }, 8000));
+    auto five1sScore4000 = std::shared_ptr<PatternScoresXRule>(new PatternScoresXRule({ 1, 1, 1, 1, 1 }, 4000));
+    auto four1sScore2000 = std::shared_ptr<PatternScoresXRule>(new PatternScoresXRule({ 1, 1, 1, 1 }, 2000));
+    auto three1sScore1000 = std::shared_ptr<PatternScoresXRule>(new PatternScoresXRule({ 1, 1, 1 }, 1000));
     auto six2sTo6sScore800TimesDiceValue = std::make_shared <NOfAKindScoresXRule>(twoToSixPredicate, 6, [](int n) { return 800 * n; });
     auto five2sTo6sScore400TimesDiceValue = std::make_shared <NOfAKindScoresXRule>(twoToSixPredicate, 5, [](int n) { return 400 * n; });
     auto four2sTo6sScore200TimesDiceValue = std::make_shared <NOfAKindScoresXRule>(twoToSixPredicate, 4, [](int n) { return 200 * n; });

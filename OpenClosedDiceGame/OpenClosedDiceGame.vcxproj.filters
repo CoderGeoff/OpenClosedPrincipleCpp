@@ -24,12 +24,30 @@
     <ClInclude Include="OpenClosedScorer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IScoringRule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoringRulesFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Single5Scores50Rule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="OpenClosedScorer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IScoringRule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoringRulesFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Single5Scores50Rule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

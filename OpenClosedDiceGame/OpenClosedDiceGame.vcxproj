@@ -75,12 +75,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="IScoringRule.h" />
+    <ClInclude Include="ScoringRulesFactory.h" />
+    <ClInclude Include="Single5Scores50Rule.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="OpenClosedScorer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="IScoringRule.cpp" />
     <ClCompile Include="OpenClosedScorer.cpp" />
+    <ClCompile Include="ScoringRulesFactory.cpp" />
+    <ClCompile Include="Single5Scores50Rule.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

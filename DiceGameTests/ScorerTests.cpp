@@ -4,11 +4,25 @@
 #include <gtest/gtest.h>
 #include "Scorer.h"
 #include "OpenClosedScorer.h"
+#include "ScoringRulesFactory.h"
 
 template <class T>
 class ScorerTests : public testing::Test
 {
+protected:
+    T CreateScorer(const std::vector<int>& dice);
 };
+
+Scorer ScorerTests<Scorer>::CreateScorer(const std::vector<int>& dice)
+{
+    return Scorer(dice);
+}
+
+OpenClosedScorer ScorerTests<OpenClosedScorer>::CreateScorer(const std::vector<int>& dice)
+{
+    ScoringRulesFactory rulesFactory;
+    return OpenClosedScorer(rulesFactory.CreateRules(), dice);
+}
 
 using testing::Types;
 typedef Types<Scorer, OpenClosedScorer> ScorerTypes;
@@ -17,7 +31,7 @@ TYPED_TEST_CASE(ScorerTests, ScorerTypes);
 TYPED_TEST(ScorerTests, GivenOneDie_WhenFiveIsThrown_ScoreShouldBe50)
 {
     auto dice = std::vector<int> { 5 };
-    TypeParam scorer(dice);
+    TypeParam scorer(this->CreateScorer(dice));
     int score = scorer.Score();
     ASSERT_EQ(50, score);
 }

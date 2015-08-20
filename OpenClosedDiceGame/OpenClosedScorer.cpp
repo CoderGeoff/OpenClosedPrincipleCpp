@@ -1,53 +1,21 @@
 #include <math.h>
 #include "OpenClosedScorer.h"
+#include "IScoringRule.h"
 
-OpenClosedScorer::OpenClosedScorer(const std::vector<int>& diceThrows)
+OpenClosedScorer::OpenClosedScorer(const std::vector<std::shared_ptr<IScoringRule>>& rules, const std::vector<int>& diceThrows)
+    :m_Rules(rules),
+    m_DiceThrows(diceThrows)
 {
-    for (int i = 1; i <= 6; ++i)
-    {
-        m_Count[i] = std::count(diceThrows.begin(), diceThrows.end(), i);
-    }
 }
 
 
 int OpenClosedScorer::Score() const
 {
     int score = 0;
-    std::map<int, int> m_Subtractions;
-
-    bool fullStraight = true;
-    for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
+    std::vector<int> diceThrows(m_DiceThrows);
+    for (auto ruleIter = m_Rules.begin(); ruleIter != m_Rules.end(); ++ruleIter)
     {
-        fullStraight = fullStraight && GetCountOf(diceThrow) - m_Subtractions[diceThrow] == 1;
+        score += (*ruleIter)->Score(&diceThrows);
     }
-    if (fullStraight)
-    {
-        for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
-        {
-            m_Subtractions[diceThrow]++;
-        }
-        score += 1500;
-    }
-
-    for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
-    {
-        int scoreMultiplier = diceThrow == 1 ? 10 : diceThrow;
-        int numberOfDice = GetCountOf(diceThrow) - m_Subtractions[diceThrow];
-        if (numberOfDice >= 3)
-        {
-            score += (100 * scoreMultiplier) * static_cast<int>(pow(2, numberOfDice - 3));
-            m_Subtractions[diceThrow] += numberOfDice;
-        }
-    }
-
-    score += (GetCountOf(5) - m_Subtractions[5]) * 50;
-    score += (GetCountOf(1) - m_Subtractions[1]) * 100;
-
     return score;
-}
-
-int OpenClosedScorer::GetCountOf(int diceThrow) const
-{
-    auto finder = m_Count.find(diceThrow);
-    return finder == m_Count.end() ? 0 : finder->second;
 }

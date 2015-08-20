@@ -4,32 +4,28 @@
 NOfAKindScoresXRule::NOfAKindScoresXRule(int value, int count, int score)
     :m_ValuePredicate([value](int n){ return n == value; }),
     m_Count(count),
-    m_Score(score)
+    m_ScoreEvaluator([score](int n){ return score; })
 {
 }
 
-int NOfAKindScoresXRule::Score() const
+NOfAKindScoresXRule::NOfAKindScoresXRule(std::function<bool(int)> valuePredicate, int count, std::function<int(int)> scoreEvaluator)
+    : m_ValuePredicate(valuePredicate),
+      m_Count(count),
+      m_ScoreEvaluator(scoreEvaluator)
 {
-    return m_Score;
 }
 
-bool NOfAKindScoresXRule::Matches(const std::map<int, int>& diceCount, std::map<int, int>* remainingDice) const
+ScoringRuleResult NOfAKindScoresXRule::TryMatch(const std::map<int, int>& diceCount) const
 {
-    std::map<int, int> diceCountAfterApplyingRule = diceCount;
-    bool result = TryRemoveMatchingDiceFrom(diceCountAfterApplyingRule);
-    *remainingDice = result ? diceCountAfterApplyingRule : diceCount;
-    return result;
-}
-
-bool NOfAKindScoresXRule::TryRemoveMatchingDiceFrom(std::map<int, int>& diceCount) const
-{
+    std::map<int, int> diceCountAfterApplyingRule(diceCount);
     for (int n = 1; n <= 6; ++n)
     {
-        if (m_ValuePredicate(n) && diceCount[n] == m_Count)
+        if (m_ValuePredicate(n) && diceCountAfterApplyingRule[n] >= m_Count)
         {
-            diceCount[n] = 0;
-            return true;
+            diceCountAfterApplyingRule[n] -= m_Count;
+            return ScoringRuleResult(m_ScoreEvaluator(n), diceCountAfterApplyingRule);
         }
     }
-    return false;
+    return ScoringRuleResult();
 }
+

@@ -16,10 +16,10 @@ int OpenClosedScorer::Score() const
     {
         auto rule = *ruleIter;
         std::map<int, int>  remainingDiceCount;
-        while (rule->Matches(diceCount, &remainingDiceCount))
+        for (ScoringRuleResult ruleResult = rule->TryMatch(diceCount); ruleResult.Matched(); ruleResult = rule->TryMatch(diceCount))
         {
-            score += rule->Score();
-            diceCount.swap(remainingDiceCount);
+            score += ruleResult.Score();
+            diceCount.swap(ruleResult.RemainingDiceCount());
         }
     }
     return score;

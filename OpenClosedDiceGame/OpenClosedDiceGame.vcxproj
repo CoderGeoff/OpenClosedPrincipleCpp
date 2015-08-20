@@ -76,6 +76,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="IScoringRule.h" />
+    <ClInclude Include="ScoringRuleResult.h" />
     <ClInclude Include="ScoringRulesFactory.h" />
     <ClInclude Include="NOfAKindScoresXRule.h" />
     <ClInclude Include="stdafx.h" />
@@ -86,6 +87,7 @@
     <ClCompile Include="IScoringRule.cpp" />
     <ClCompile Include="NOfAKindScoresXRule.cpp" />
     <ClCompile Include="OpenClosedScorer.cpp" />
+    <ClCompile Include="ScoringRuleResult.cpp" />
     <ClCompile Include="ScoringRulesFactory.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

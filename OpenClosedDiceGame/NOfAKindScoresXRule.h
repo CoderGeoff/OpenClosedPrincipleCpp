@@ -6,13 +6,13 @@ class NOfAKindScoresXRule : public IScoringRule
 {
     std::function<bool(int)> m_ValuePredicate;
     int m_Count;
-    int m_Score;
+    std::function<int(int)> m_ScoreEvaluator;
 
     bool TryRemoveMatchingDiceFrom(std::map<int, int>& diceCount) const;
 
 public:
     NOfAKindScoresXRule(int value, int count, int score);
-    int Score() const override;
-    bool Matches(const std::map<int, int>& diceCount, std::map<int, int>* remainingDice) const override;
+    NOfAKindScoresXRule(std::function<bool(int)> valuePredicate, int count, std::function<int(int)> scoreEvaluator);
+    ScoringRuleResult TryMatch(const std::map<int, int>& diceCount) const override;
 };
 

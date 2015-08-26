@@ -1,4 +1,3 @@
-#include <math.h>
 #include "Scorer.h"
 
 Scorer::Scorer(const std::vector<int>& diceThrows)

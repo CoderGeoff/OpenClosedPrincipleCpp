@@ -4,6 +4,6 @@
 #include <gtest/gtest.h>
 #include "Scorer.h"
 
-TEST(ScorerTests, GivenFiveDice_WhenThreeOnesAndTwoFivesAreThrown_ScoreShouldBe1250)
+TEST(NewRuleTests, GivenFiveDice_WhenThreeOnesAndTwoFivesAreThrown_ScoreShouldBe1250)
 {
 }

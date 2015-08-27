@@ -1,5 +1,14 @@
 # OpenCloseCpp
-An exercise to underline the OCP
+An exercise to underline the Open Closed Principle, using C++ and Visual Studio. Based on Visual Studio 2013.
+
+## Getting started
+
+1. Clone the repository 
+2. Open Visual Studio
+3. Open the solution file, OpenClosed.sln, in the root directory of the repository
+4. Build the project in Debug
+5. Run the tests, Debug/DiceGameTests.exe 
+6. Have a look at the code:
 
 Here you will see the following classes
 

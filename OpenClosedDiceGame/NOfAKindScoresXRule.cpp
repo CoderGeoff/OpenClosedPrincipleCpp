@@ -1,9 +1,9 @@
 #include "NOfAKindScoresXRule.h"
 
 
-NOfAKindScoresXRule::NOfAKindScoresXRule(std::function<bool(int)> valuePredicate, int count, std::function<int(int)> scoreEvaluator)
-    : m_ValuePredicate(valuePredicate),
-      m_Count(count),
+NOfAKindScoresXRule::NOfAKindScoresXRule(int count, std::function<bool(int)> valuePredicate, std::function<int(int)> scoreEvaluator)
+    : m_Count(count), 
+      m_ValuePredicate(valuePredicate),
       m_ScoreEvaluator(scoreEvaluator)
 {
 }

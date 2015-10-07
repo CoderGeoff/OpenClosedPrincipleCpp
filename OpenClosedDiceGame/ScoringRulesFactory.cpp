@@ -10,10 +10,10 @@ std::vector<std::shared_ptr<IScoringRule>> ScoringRulesFactory::CreateRules() co
     auto five1sScore4000 = MakeShared(new PatternScoresXRule({ 1, 1, 1, 1, 1 }, 4000));
     auto four1sScore2000 = MakeShared(new PatternScoresXRule({ 1, 1, 1, 1 }, 2000));
     auto three1sScore1000 = MakeShared(new PatternScoresXRule({ 1, 1, 1 }, 1000));
-    auto six2sTo6sScore800TimesDiceValue = MakeShared(new NOfAKindScoresXRule(twoToSixPredicate, 6, [](int n) { return 800 * n; }));
-    auto five2sTo6sScore400TimesDiceValue = MakeShared(new NOfAKindScoresXRule(twoToSixPredicate, 5, [](int n) { return 400 * n; }));
-    auto four2sTo6sScore200TimesDiceValue = MakeShared(new NOfAKindScoresXRule(twoToSixPredicate, 4, [](int n) { return 200 * n; }));
-    auto three2sTo6sScore100TimesDiceValue = MakeShared(new NOfAKindScoresXRule(twoToSixPredicate, 3, [](int n) { return 100 * n; }));
+    auto six2sTo6sScore800TimesDiceValue = MakeShared(new NOfAKindScoresXRule(6, twoToSixPredicate, [](int n) { return 800 * n; }));
+    auto five2sTo6sScore400TimesDiceValue = MakeShared(new NOfAKindScoresXRule(5, twoToSixPredicate, [](int n) { return 400 * n; }));
+    auto four2sTo6sScore200TimesDiceValue = MakeShared(new NOfAKindScoresXRule(4, twoToSixPredicate, [](int n) { return 200 * n; }));
+    auto three2sTo6sScore100TimesDiceValue = MakeShared(new NOfAKindScoresXRule(3, twoToSixPredicate, [](int n) { return 100 * n; }));
     auto straightFlushScores1500 = MakeShared(new PatternScoresXRule({ 1, 2, 3, 4, 5, 6 }, 1500));
     auto single1Scores100 = MakeShared(new PatternScoresXRule({ 1 }, 100));
     auto single5Scores50 = MakeShared(new PatternScoresXRule({ 5 }, 50));

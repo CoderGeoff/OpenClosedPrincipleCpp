@@ -51,7 +51,7 @@ You can only score each die once.
 The players want to change the score for six ones from 8000 to 10000.
 Implement this as follows
 
-* Change the test GivenThreeDie_WhenAllOnesAreThrown_ScoreShouldBe1000
+* Implement the test GivenSixDie_WhenAllOnesAreThrown_ScoreShouldBe10000
 * Change Scorer to get it to pass the test
 * Change OpenClosedScorer
 

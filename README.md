@@ -51,24 +51,25 @@ You can only score each die once.
 The players want to change the score for six ones from 8000 to 10000.
 Implement this as follows
 
-# Change the test GivenThreeDie_WhenAllOnesAreThrown_ScoreShouldBe1000
-# Change Scorer to get it to pass the test
-# Change OpenClosedScorer
+* Change the test GivenThreeDie_WhenAllOnesAreThrown_ScoreShouldBe1000
+* Change Scorer to get it to pass the test
+* Change OpenClosedScorer
 
 ## Task 2
 The players want to remove all the rules that match three of a kind (three 1s, three 2s etc.) 
 Implement this as follows
 
-# Change the tests GivenThreeDie...etc. to validate that the score is 0 in each case
-# Change Scorer to implement the change
-# Change OpenClosedScorer to make the same change
+* Change the tests GivenThreeDie...etc. to validate that the score is 0 in each case
+* Change Scorer to implement the change
+* Change OpenClosedScorer to make the same change
 
 ## Task 3
 The players want to add a new rule: fours 2s and a pair of 3s score 1500, and so do four 3s and pair of 2s. This is scored instead of the normal score for four 2s or four 3s.
 Implement this as follows
-# Add two tests to validate the new rule
-# Change Scorer to implement the new rule
-# Change OpenClosedScorer to make the same change
+
+* Add two tests to validate the new rule
+* Change Scorer to implement the new rule
+* Change OpenClosedScorer to make the same change
 
 # Task 4
 The tests in ScorerTests were written intially for the scorer that doesn't obey the open-closed principle and were retro-fitted to the OpenClosedScorer. If we had started from 
